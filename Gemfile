@@ -42,3 +42,7 @@ group :test do
   gem "cucumber-rails"
   gem "capybara"
 end
+
+group :production do
+  gem 'hassle', :git => 'git://github.com/Papipo/hassle.git'
+end

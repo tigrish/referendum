@@ -43,6 +43,8 @@ GEM
     celerity (0.8.5)
     childprocess (0.1.4)
       ffi (~> 0.6.3)
+    compass (0.10.6)
+      haml (>= 3.0.4)
     cucumber (0.10.0)
       builder (>= 2.1.2)
       diff-lcs (~> 1.1.2)
@@ -141,6 +143,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  compass
   cucumber-rails
   devise
   haml (>= 3.0.0)

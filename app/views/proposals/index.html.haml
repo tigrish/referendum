@@ -1,0 +1,17 @@
+- content_for(:aside) do
+  %nav
+    %ul
+      %li= link_to(:new, new_proposal_path)
+
+%h1= Proposal.human_name
+
+%table
+  %tr
+    %th= Proposal.human_attribute_name(:id)
+    %th= Proposal.human_attribute_name(:title)
+    %th= Proposal.human_attribute_name(:user)
+  - @proposals.each do |proposal|
+    %tr
+      %td= proposal.id
+      %td= proposal.title
+      %td= proposal.user.email

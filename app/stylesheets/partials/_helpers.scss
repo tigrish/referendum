@@ -1,0 +1,7 @@
+.alert {
+  @include error;
+}
+
+.notice {
+  @include success;
+}

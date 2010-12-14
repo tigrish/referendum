@@ -15,5 +15,7 @@
         = render 'layouts/user_session'
         = render 'layouts/navigation'
       %section#sidebar= yield(:aside)
-      %section#content= yield
+      %section#content
+        = render 'layouts/messages'
+        = yield
       %footer#footer

@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Democracy::Application.config.secret_token = '0c5f545ec374ca94708838444f2fbbd44c6852d6482f18f57c5c29c611c4100f6afd86d0a50bd1a9250379e9289b22828e9fd68f1ce8a375dd6a92587c627ee1'
+Democracy::Application.config.secret_token = 'de36f04abe22780f030bbd8afa58fb4aa3bc5577f4f6b5be9f3a1046c12bc1f4cebc5df262131a3027bd3579c82f3ec071864fe4050fc965280ef988b49e9852'

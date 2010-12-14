@@ -1,3 +1,3 @@
 class ProposalsController < InheritedResources::Base
-  actions :index
+  actions :all, :except => [:edit, :update, :destroy]
 end

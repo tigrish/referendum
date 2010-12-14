@@ -10,8 +10,10 @@
     %th= Proposal.human_attribute_name(:id)
     %th= Proposal.human_attribute_name(:title)
     %th= Proposal.human_attribute_name(:user)
+    %th= Proposal.human_attribute_name(:created_at)
   - @proposals.each do |proposal|
     %tr
       %td= proposal.id
-      %td= proposal.title
+      %td= link_to(proposal.title, proposal)
       %td= proposal.user.email
+      %td= l(proposal.created_at, :format => :short)

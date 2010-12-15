@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe ProposalsController do
-
   describe "GET 'index'" do
     it "should be successful" do
       get 'index'
@@ -11,8 +10,8 @@ describe ProposalsController do
   
   describe "POST 'create'" do
     before(:each) do
-      @user = User.generate!
-      controller.send(:current_uesr=, @user)
+      @user = Factory(:user)
+      sign_in @user
     end
     
     def do_action
@@ -25,7 +24,7 @@ describe ProposalsController do
     
     it "should assign the current_user to the created proposal" do
       do_action
-      assigns(:proposal).should == @user
+      assigns(:proposal).user.should == @user
     end
   end
 

@@ -14,8 +14,8 @@
         %logo#logo Democracy
         = render 'layouts/user_session'
         = render 'layouts/navigation'
-      %section#sidebar= yield(:aside)
       %section#content
         = render 'layouts/messages'
         = yield
+      %section#sidebar= yield(:aside)
       %footer#footer

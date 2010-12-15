@@ -15,5 +15,5 @@
     %tr
       %td= proposal.id
       %td= link_to(proposal.title, proposal)
-      %td= proposal.user.email
+      %td= proposal.user.name
       %td= l(proposal.created_at, :format => :short)

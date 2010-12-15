@@ -1,7 +1,7 @@
 %nav#user_session
   %ul
     - if user_signed_in?
-      %li= current_user.email
+      %li= current_user.name
       %li= link_to(:signout, destroy_user_session_path)
     - else
       %li= link_to(:sign_in, new_user_session_path)

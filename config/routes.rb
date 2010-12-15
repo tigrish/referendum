@@ -1,7 +1,9 @@
 Democracy::Application.routes.draw do
   devise_for :users
 
-  resources :proposals
+  resources :proposals do
+    resources :comments
+  end
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

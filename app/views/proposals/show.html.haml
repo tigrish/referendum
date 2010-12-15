@@ -1,3 +1,11 @@
 %h1= @proposal.title
 %h2= @proposal.user.name
 %p= @proposal.description
+
+%h2= Comment.human_name
+%section#comments
+  = render @proposal.comments
+  
+  = simple_form_for([@proposal, Comment.new]) do |f|
+    = f.input :body
+    = f.submit

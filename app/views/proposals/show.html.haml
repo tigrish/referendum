@@ -2,6 +2,30 @@
 %h2= @proposal.user.name
 %p= @proposal.description
 
+- content_for(:sidebar) do
+  %h2= Vote.human_name
+  %section#votes
+    %p
+      - if @proposal.votes.sum(:value) > 0
+        globally in favor
+      - elsif @proposal.votes.sum(:value) < 0
+        globally against
+    %p
+      = @proposal.votes.count
+      in total
+
+    - if current_user.votes.where(:proposal_id => @proposal.id).exists?
+      %p You have already voted
+    - else
+      %p
+        = simple_form_for([@proposal, Vote.new]) do |f|
+          = f.input :value, :as => :hidden, :input_html => { :value => '1' }
+          = f.submit 'In favor'
+      %p
+        = simple_form_for([@proposal, Vote.new]) do |f|
+          = f.input :value, :as => :hidden, :input_html => { :value => '-1' }
+          = f.submit 'Against'
+
 %h2= Comment.human_name
 %section#comments
   = render @proposal.comments

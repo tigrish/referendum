@@ -3,6 +3,7 @@ Democracy::Application.routes.draw do
 
   resources :proposals do
     resources :comments
+    resources :votes
   end
 
   # Sample of regular route:

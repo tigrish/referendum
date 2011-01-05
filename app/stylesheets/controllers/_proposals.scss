@@ -1,0 +1,27 @@
+#sidebar {
+  #votes {
+    .percentage {
+      font-size: 1.4em;
+      margin-bottom: .2em;
+    }
+    
+    .count {
+      font-size: .8em;
+      margin-bottom: 1em;
+    }
+        
+    .against {
+      @include column(ceil($sidebar-columns / 2), true);
+      text-align: center;
+      
+      .wrapper { @include error; }
+    }
+    
+    .in_favor {
+      @include column(floor($sidebar-columns / 2));
+      text-align: center;
+      
+      .wrapper { @include success; }
+    }
+  }  
+}

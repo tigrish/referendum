@@ -11,3 +11,7 @@ describe Proposal, 'validations' do
   should_validate_presence_of :description
   should_validate_presence_of :user
 end
+
+describe Proposal, "" do
+  
+end

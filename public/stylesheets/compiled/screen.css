@@ -321,25 +321,25 @@ caption {
   display: inline;
   float: left;
   margin-right: 10px;
-  width: 470px;
+  width: 310px;
   font-weight: bold;
 }
 /* line 138, ../../../../../../.rvm/gems/ruby-1.8.7-p249@democracy/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html #header #logo {
   overflow-x: hidden;
 }
-/* line 12, ../../../app/stylesheets/partials/_page.scss */
+/* line 11, ../../../app/stylesheets/partials/_page.scss */
 #header #user_session {
   display: inline;
   float: left;
   margin-right: 0;
-  width: 470px;
+  width: 310px;
 }
 /* line 138, ../../../../../../.rvm/gems/ruby-1.8.7-p249@democracy/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html #header #user_session {
   overflow-x: hidden;
 }
-/* line 15, ../../../app/stylesheets/partials/_page.scss */
+/* line 13, ../../../app/stylesheets/partials/_page.scss */
 #header #user_session ul {
   margin: 0;
   padding: 0;
@@ -367,7 +367,7 @@ caption {
 #header #user_session ul li:last-child, #header #user_session ul li.last {
   padding-left: 0;
 }
-/* line 19, ../../../app/stylesheets/partials/_page.scss */
+/* line 17, ../../../app/stylesheets/partials/_page.scss */
 #header #navigation ul {
   margin: 0;
   padding: 0;
@@ -396,7 +396,7 @@ caption {
   padding-right: 0;
 }
 
-/* line 24, ../../../app/stylesheets/partials/_page.scss */
+/* line 22, ../../../app/stylesheets/partials/_page.scss */
 #footer {
   border-top: 1px solid #666666;
   margin-top: 1.5em;
@@ -470,7 +470,7 @@ body.two-col #content {
   overflow-x: hidden;
 }
 
-/* line 35, ../../../app/stylesheets/partials/_two_col.scss */
+/* line 31, ../../../app/stylesheets/partials/_two_col.scss */
 #sidebar {
   display: inline;
   float: left;
@@ -480,4 +480,65 @@ body.two-col #content {
 /* line 138, ../../../../../../.rvm/gems/ruby-1.8.7-p249@democracy/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html #sidebar {
   overflow-x: hidden;
+}
+
+/* line 3, ../../../app/stylesheets/controllers/_proposals.scss */
+#sidebar #votes .percentage {
+  font-size: 1.4em;
+  margin-bottom: .2em;
+}
+/* line 8, ../../../app/stylesheets/controllers/_proposals.scss */
+#sidebar #votes .count {
+  font-size: .8em;
+  margin-bottom: 1em;
+}
+/* line 13, ../../../app/stylesheets/controllers/_proposals.scss */
+#sidebar #votes .against {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 150px;
+  text-align: center;
+}
+/* line 138, ../../../../../../.rvm/gems/ruby-1.8.7-p249@democracy/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html #sidebar #votes .against {
+  overflow-x: hidden;
+}
+/* line 17, ../../../app/stylesheets/controllers/_proposals.scss */
+#sidebar #votes .against .wrapper {
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 2px solid #dddddd;
+  background: #fbe3e4;
+  color: #8a1f11;
+  border-color: #fbc2c4;
+}
+/* line 29, ../../../../../../.rvm/gems/ruby-1.8.7-p249@democracy/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+#sidebar #votes .against .wrapper a {
+  color: #8a1f11;
+}
+/* line 20, ../../../app/stylesheets/controllers/_proposals.scss */
+#sidebar #votes .in_favor {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 150px;
+  text-align: center;
+}
+/* line 138, ../../../../../../.rvm/gems/ruby-1.8.7-p249@democracy/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html #sidebar #votes .in_favor {
+  overflow-x: hidden;
+}
+/* line 24, ../../../app/stylesheets/controllers/_proposals.scss */
+#sidebar #votes .in_favor .wrapper {
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 2px solid #dddddd;
+  background: #e6efc2;
+  color: #264409;
+  border-color: #c6d880;
+}
+/* line 45, ../../../../../../.rvm/gems/ruby-1.8.7-p249@democracy/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+#sidebar #votes .in_favor .wrapper a {
+  color: #264409;
 }

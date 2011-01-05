@@ -2,4 +2,22 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  controllers:
+    proposals:
+      votes:
+        count:
+          one: 1 vote
+          other: %{count} votes
+        total:
+          one: 1 vote in total
+          other: %{count} votes in total
+        against:
+          action: Vote against
+          count:
+            one: 1 vote against
+            other: %{count} votes against
+        in_favor:
+          action: Vote in favor
+          count:
+            one: 1 vote in favor
+            other: %{count} votes in favor

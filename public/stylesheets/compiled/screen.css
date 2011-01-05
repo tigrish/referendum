@@ -314,14 +314,14 @@ caption {
 #header {
   border-bottom: 1px solid #666666;
   margin-bottom: 1.5em;
-  padding: 1.5em 0;
+  padding: 1.5em 0 0;
 }
 /* line 6, ../../../app/stylesheets/partials/_page.scss */
 #header #logo {
   display: inline;
   float: left;
   margin-right: 10px;
-  width: 310px;
+  width: 630px;
   font-weight: bold;
 }
 /* line 138, ../../../../../../.rvm/gems/ruby-1.8.7-p249@democracy/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
@@ -367,7 +367,12 @@ caption {
 #header #user_session ul li:last-child, #header #user_session ul li.last {
   padding-left: 0;
 }
-/* line 17, ../../../app/stylesheets/partials/_page.scss */
+/* line 16, ../../../app/stylesheets/partials/_page.scss */
+#header #navigation {
+  float: left;
+  width: 100%;
+}
+/* line 19, ../../../app/stylesheets/partials/_page.scss */
 #header #navigation ul {
   margin: 0;
   padding: 0;
@@ -395,8 +400,20 @@ caption {
 #header #navigation ul li:last-child, #header #navigation ul li.last {
   padding-right: 0;
 }
+/* line 20, ../../../app/stylesheets/partials/_page.scss */
+#header #navigation a {
+  text-decoration: none;
+  background: #ccc;
+  border: 1px solid;
+  border-bottom: 0;
+  padding: 0 1em;
+}
+/* line 4, ../../../../../../.rvm/gems/ruby-1.8.7-p249@democracy/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/utilities/links/_hover-link.scss */
+#header #navigation a:hover {
+  text-decoration: underline;
+}
 
-/* line 22, ../../../app/stylesheets/partials/_page.scss */
+/* line 31, ../../../app/stylesheets/partials/_page.scss */
 #footer {
   border-top: 1px solid #666666;
   margin-top: 1.5em;

@@ -21,3 +21,5 @@ en:
           count:
             one: 1 vote in favor
             other: %{count} votes in favor
+      user:
+        info: By %{user_name} on %{proposal_date}

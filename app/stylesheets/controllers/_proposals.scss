@@ -1,3 +1,17 @@
+#proposal {
+  .user {
+    color: lighten($header-color, 40);
+    margin-bottom: 1.5em;
+  }
+}
+
+#comments {
+  .comment {
+    border-top: 1px dotted $grey;
+    padding-top: 1.5em;
+  }
+}
+
 #sidebar {
   #votes {
     .percentage {

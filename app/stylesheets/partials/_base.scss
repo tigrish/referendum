@@ -1,6 +1,8 @@
-// Here is where you can define your constants for your application and to configure the blueprint framework.
-// Feel free to delete these if you want keep the defaults:
+//-----------------------------------------------------------------------------
+// grid
+//-----------------------------------------------------------------------------
 
+$blueprint-font-size: 14px;
 $blueprint-grid-columns: 24;
 $blueprint-container-size: 950px;
 $blueprint-grid-margin: 10px;
@@ -15,3 +17,31 @@ $content-columns: ceil(2 * $blueprint-grid-columns / 3);
 
 // One third of the grid columns, rounding down. With 24 cols, this is 8.
 $sidebar-columns: floor($blueprint-grid-columns / 3);
+
+//-----------------------------------------------------------------------------
+// colours
+//-----------------------------------------------------------------------------
+$blue:  #0B88DA;
+$white: #F5FEFB;
+$grey:  #56555A;
+$black: #0D0C0A;
+$red:   #F22613;
+
+// blueprint
+$header-color:        $grey;
+$link-color:          $blue;
+$link-hover-color:    $red;
+
+// header
+$logo_color:          $white;
+$header_text_color:   $white;
+$header_bg_color:     $black;
+$header_border_color: $grey;
+
+// nav
+$nav_link_color:      $white;
+$nav_link_bg_color:   $grey;
+
+// sidebar
+$sidebar_bg_color:     lighten($grey, 60);
+$sidebar_border_color: lighten($grey, 40);

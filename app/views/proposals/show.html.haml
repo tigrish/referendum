@@ -1,7 +1,15 @@
-%h1= @proposal.title
-%h2= @proposal.user.name
-%p= @proposal.description
+%section#proposal
+  %h1= @proposal.title
+  .user= t('controllers.proposals.user.info', :user_name => @proposal.user.name, :proposal_date => l(@proposal.created_at))
+  %p= @proposal.description
 
+%h2= Comment.human_name
+%section#comments
+  = render @proposal.comments
+  = simple_form_for([@proposal, Comment.new]) do |f|
+    = f.input :body
+    = f.submit
+    
 - content_for(:sidebar) do
   %section#votes
     .in_favor
@@ -9,7 +17,7 @@
         .percentage
           = @proposal.votes.count == 0 ? number_to_percentage(0) : number_to_percentage((@proposal.votes.in_favor.count*100) / @proposal.votes.count)
         .count= t('controllers.proposals.votes.in_favor.count', :count => @proposal.votes.in_favor.count)
-        
+
         = simple_form_for([@proposal, Vote.new]) do |f|
           = f.input :value, :as => :hidden, :input_html => { :value => '1' }
           = f.submit t('controllers.proposals.votes.in_favor.action')
@@ -18,16 +26,9 @@
         .percentage
           = @proposal.votes.count == 0 ? number_to_percentage(0) : number_to_percentage((@proposal.votes.against.count*100) / @proposal.votes.count)
         .count= t('controllers.proposals.votes.against.count', :count => @proposal.votes.against.count)
-        
+
         = simple_form_for([@proposal, Vote.new]) do |f|
           = f.input :value, :as => :hidden, :input_html => { :value => '-1' }
           = f.submit t('controllers.proposals.votes.against.action')
-          
-    %small= t('controllers.proposals.votes.total', :count => @proposal.votes.count)        
 
-%h2= Comment.human_name
-%section#comments
-  = render @proposal.comments
-  = simple_form_for([@proposal, Comment.new]) do |f|
-    = f.input :body
-    = f.submit
+    %small= t('controllers.proposals.votes.total', :count => @proposal.votes.count)

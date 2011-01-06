@@ -22,11 +22,17 @@
 //    +--------+---------------+
 
 body.two-col {
-  #container {
-    @include container; }
+  .container {
+    @include container;
+  }
   #header, #footer {
-    @include column($blueprint-grid-columns); }
+/*    @include column($blueprint-grid-columns);*/
+  }
   #content {
-    @include column($content-columns); } }
-  #sidebar {
-    @include column($sidebar-columns, true); }
+    @include column($content-columns - 1);
+    @include append(1);
+  }
+}
+#sidebar {
+  @include column($sidebar-columns, true);
+}

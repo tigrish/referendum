@@ -11,9 +11,10 @@
 @import "compass";
 
 // Get some basic typography styles
-@include blueprint-typography-defaults;
+@include blueprint-typography;
 
 // Combine the partials into a single screen stylesheet.
+@import "partials/html";
 @import "partials/page";
 @import "partials/helpers";
 @import "partials/form";

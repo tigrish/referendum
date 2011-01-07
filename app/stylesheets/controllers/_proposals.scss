@@ -6,9 +6,16 @@
 }
 
 #comments {
+  textarea {
+    width: 100%;
+  }
+
   .comment {
-    border-top: 1px dotted $grey;
-    padding-top: 1.5em;
+    border-top: 1px solid $divider_color;
+    padding: .75em 0;
+    p {
+      margin: 0;
+    }
   }
 }
 

@@ -1,3 +1,3 @@
 .comment
-  %strong= comment.user.name
-  %p= comment.body
+  %em= t('controllers.proposals.comment.info', :user_name => comment.user.name, :comment_date => l(comment.created_at, :format => :short))
+  = simple_format(comment.body)

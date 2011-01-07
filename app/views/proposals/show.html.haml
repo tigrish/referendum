@@ -1,13 +1,13 @@
 %section#proposal
   %h1= @proposal.title
-  .user= t('controllers.proposals.user.info', :user_name => @proposal.user.name, :proposal_date => l(@proposal.created_at))
+  .user= t('controllers.proposals.user.info', :user_name => @proposal.user.name, :proposal_date => l(@proposal.created_at, :format => :short))
   %p= simple_format(@proposal.description)
 
 %section#comments
-  = render @proposal.comments
   = simple_form_for([@proposal, Comment.new]) do |f|
-    = f.input :body, :label => Comment.human_name
+    = f.input :body, :label => Comment.human_name, :input_html => { :rows => 5}
     = f.submit :submit
+  = render @proposal.comments
     
 - content_for(:sidebar) do
   %section#votes

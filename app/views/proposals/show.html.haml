@@ -4,9 +4,10 @@
   %p= simple_format(@proposal.description)
 
 %section#comments
-  = simple_form_for([@proposal, Comment.new]) do |f|
-    = f.input :body, :label => Comment.human_name, :input_html => { :rows => 5}
-    = f.submit :submit
+  - if user_signed_in?
+    = simple_form_for([@proposal, Comment.new]) do |f|
+      = f.input :body, :label => Comment.human_name, :input_html => { :rows => 5}
+      = f.submit :submit
   = render @proposal.comments
     
 - content_for(:sidebar) do
@@ -16,18 +17,22 @@
         .percentage
           = @proposal.votes.count == 0 ? number_to_percentage(0) : number_to_percentage((@proposal.votes.in_favor.count*100) / @proposal.votes.count)
         .count= t('controllers.proposals.votes.in_favor.count', :count => @proposal.votes.in_favor.count)
-
-        = simple_form_for([@proposal, Vote.new]) do |f|
-          = f.input :value, :as => :hidden, :input_html => { :value => '1' }
-          = f.submit t('controllers.proposals.votes.in_favor.action')
+        
+        - if user_signed_in? && !current_user.votes.where(:proposal_id => @proposal.id).any?
+          = simple_form_for([@proposal, Vote.new]) do |f|
+            = f.input :value, :as => :hidden, :input_html => { :value => '1' }
+            = f.submit t('controllers.proposals.votes.in_favor.action')
     .against
       .wrapper
         .percentage
           = @proposal.votes.count == 0 ? number_to_percentage(0) : number_to_percentage((@proposal.votes.against.count*100) / @proposal.votes.count)
         .count= t('controllers.proposals.votes.against.count', :count => @proposal.votes.against.count)
 
-        = simple_form_for([@proposal, Vote.new]) do |f|
-          = f.input :value, :as => :hidden, :input_html => { :value => '-1' }
-          = f.submit t('controllers.proposals.votes.against.action')
+        - if user_signed_in? && !current_user.votes.where(:proposal_id => @proposal.id).any?
+          = simple_form_for([@proposal, Vote.new]) do |f|
+            = f.input :value, :as => :hidden, :input_html => { :value => '-1' }
+            = f.submit t('controllers.proposals.votes.against.action')
 
     %small= t('controllers.proposals.votes.total', :count => @proposal.votes.count)
+    - if user_signed_in? && current_user.votes.where(:proposal_id => @proposal.id).any?
+      %p= t('controllers.proposals.votes.current_user_vote')

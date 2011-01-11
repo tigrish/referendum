@@ -19,13 +19,13 @@ describe Vote, "scopes" do
   
   describe ".in_favor" do
     it "returns votes where value is 1" do
-      Vote.in_favor.should == @in_favor
+      Vote.in_favor.first.should == @in_favor
     end
   end
   
   describe ".against" do
     it "returns votes where value is -1" do
-      Vote.against.should == @against
+      Vote.against.first.should == @against
     end
   end
 end

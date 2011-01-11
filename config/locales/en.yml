@@ -23,5 +23,11 @@ en:
           count:
             one: 1 vote in favor
             other: %{count} votes in favor
+        current_user_vote: "You voted have already voted"
       user:
         info: By %{user_name} on %{proposal_date}
+    votes:
+      create:
+        flash:
+          alert: "Sorry, your vote could not be taken into account"
+          notice: "Thank you for voting!"

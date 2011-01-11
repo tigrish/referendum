@@ -1,4 +1,5 @@
 class CommentsController < InheritedResources::Base
+  before_filter :authenticate_user!
   actions :create
   belongs_to :proposal
   
@@ -7,6 +8,7 @@ class CommentsController < InheritedResources::Base
     @comment.user = current_user
     create! do |success, failure|
       success.html { redirect_to(parent) }
+      failure.html { redirect_to(parent) }
     end
   end
 end

@@ -8,6 +8,7 @@ gem "inherited_resources"
 gem "mysql"
 gem 'rails', '3.0.3'
 gem "simple_form"
+gem 'version_bumper'
 
 gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
 

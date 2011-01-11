@@ -47,3 +47,8 @@ $nav_link_bg_color:   $grey;
 // sidebar
 $sidebar_bg_color:     lighten($grey, 60);
 $sidebar_border_color: lighten($grey, 40);
+
+
+// footer
+$footer_color:      lighten($grey, 20);
+$footer_link_color: darken($footer_color, 20);

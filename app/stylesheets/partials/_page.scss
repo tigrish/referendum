@@ -48,7 +48,13 @@
 #footer {
   border-top: 1px solid $divider_color;
   float: left;
+  font-size: .8em;
+  font-style: italic;
   margin-top:1.5em;
   padding: 1.5em 0;
   width: 100%;
+  
+  a {
+    @include link-colors($footer_link_color);
+  }
 }

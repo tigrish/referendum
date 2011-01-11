@@ -1,4 +1,7 @@
-#proposal {
+.proposal {
+  .state {
+    &.open { @include success; }
+  }
   .user {
     color: lighten($header-color, 40);
     margin-bottom: 1.5em;

@@ -1,12 +1,13 @@
-%section#proposal
+= content_tag_for(:section, @proposal) do
   %h1= @proposal.title
-  .user= t('controllers.proposals.user.info', :user_name => @proposal.user.name, :proposal_date => l(@proposal.created_at, :format => :short))
+  %span.state{:class => @proposal.state}= @proposal.state
+  %span.user= t('controllers.proposals.user.info', :user_name => @proposal.user.name, :proposal_date => l(@proposal.created_at, :format => :short))
   %p= simple_format(@proposal.description)
 
 %section#comments
   - if user_signed_in?
     = simple_form_for([@proposal, Comment.new]) do |f|
-      = f.input :body, :label => Comment.human_name, :input_html => { :rows => 5}
+      = f.input :body, :label => Comment.human_name, :input_html => { :rows => 5 }
       = f.submit :submit
   = render @proposal.comments
     

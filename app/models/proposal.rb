@@ -9,5 +9,10 @@ class Proposal < ActiveRecord::Base
   
   state_machine do
     state :open
+    state :closed
+    
+    event :close do
+      transitions :from => :open, :to => :closed
+    end
   end
 end

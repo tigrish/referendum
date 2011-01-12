@@ -11,6 +11,12 @@ describe Vote, "validations" do
   should_validate_inclusion_of :value, :in => [-1, 1]
 end
 
+describe Vote, "after_save" do
+  it "closes the proposal when everybody has voted" do
+    pending
+  end
+end
+
 # describe Vote, "uniqueness validations" do
 #   before(:each) { Factory(:vote) }
 #   should_validate_uniqueness_of :proposal_id, :scope => :user_id

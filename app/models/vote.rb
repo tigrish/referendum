@@ -8,6 +8,8 @@ class Vote < ActiveRecord::Base
   validates_uniqueness_of :proposal_id, :scope => :user_id
   validate :proposal_state
   
+  after_save :close_completed_proposal
+  
   scope :against, where(:value => -1)
   scope :in_favor, where(:value => 1)
 
@@ -15,5 +17,9 @@ protected
 
   def proposal_state
     errors.add(:proposal, :not_open) if proposal && !proposal.open?
+  end
+  
+  def close_completed_proposal
+    proposal.close! if proposal.votes.count == User.count
   end
 end

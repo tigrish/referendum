@@ -152,6 +152,7 @@ GEM
       rails (~> 3.0.0)
     term-ansicolor (1.0.5)
     thor (0.14.6)
+    transitions (0.0.9)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
@@ -180,4 +181,5 @@ DEPENDENCIES
   remarkable_activerecord (>= 4.0.0.alpha2)
   rspec-rails (>= 2.0.1)
   simple_form
+  transitions
   version_bumper

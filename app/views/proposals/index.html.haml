@@ -8,12 +8,14 @@
 %table
   %tr
     %th= Proposal.human_attribute_name(:id)
+    %th= Proposal.human_attribute_name(:state)
     %th= Proposal.human_attribute_name(:title)
     %th= Proposal.human_attribute_name(:user)
     %th= Proposal.human_attribute_name(:created_at)
   - @proposals.each do |proposal|
-    %tr
+    = content_tag_for(:tr, proposal) do
       %td= proposal.id
+      %td.state{:class => proposal.state}= proposal.state
       %td= link_to(proposal.title, proposal)
-      %td= proposal.user.name
+      %td.user= proposal.user.name
       %td= l(proposal.created_at, :format => :short)

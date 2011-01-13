@@ -12,7 +12,13 @@ class Proposal < ActiveRecord::Base
     state :closed
     
     event :close do
-      transitions :from => :open, :to => :closed
+      transitions :from => :open, :to => :closed, :on_transition => :do_close
     end
+  end
+  
+protected
+
+  def do_close
+    self.closed_at = Time.now
   end
 end

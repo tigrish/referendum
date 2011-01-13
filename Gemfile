@@ -4,6 +4,7 @@ gem "compass"
 gem "devise"
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
+gem "has_scope"
 gem "inherited_resources"
 gem "mysql"
 gem 'rails', '3.0.3'

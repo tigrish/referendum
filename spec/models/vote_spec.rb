@@ -17,10 +17,10 @@ describe Vote, "after_save" do
   end
 end
 
-# describe Vote, "uniqueness validations" do
-#   before(:each) { Factory(:vote) }
-#   should_validate_uniqueness_of :proposal_id, :scope => :user_id
-# end
+describe Vote, "uniqueness validations" do
+  before(:each) { Factory(:vote) }
+  should_validate_uniqueness_of :proposal_id, :scope => :user_id
+end
 
 describe Vote, "proposal validations" do
   

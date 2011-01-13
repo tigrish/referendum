@@ -38,21 +38,21 @@ describe Vote, "proposal validations" do
   end
 end
 
-# describe Vote, "scopes" do
-#   before(:each) do
-#     @in_favor = Factory(:vote, :value => 1)
-#     @against = Factory(:vote, :value => -1)
-#   end
-#   
-#   describe ".in_favor" do
-#     it "returns votes where value is 1" do
-#       Vote.in_favor.first.should == @in_favor
-#     end
-#   end
-#   
-#   describe ".against" do
-#     it "returns votes where value is -1" do
-#       Vote.against.first.should == @against
-#     end
-#   end
-# end
+describe Vote, "scopes" do
+  before(:each) do
+    @in_favor = Factory(:vote, :value => 1)
+    @against = Factory(:vote, :value => -1)
+  end
+  
+  describe ".in_favor" do
+    it "returns votes where value is 1" do
+      Vote.in_favor.first.should == @in_favor
+    end
+  end
+  
+  describe ".against" do
+    it "returns votes where value is -1" do
+      Vote.against.first.should == @against
+    end
+  end
+end

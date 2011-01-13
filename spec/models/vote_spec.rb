@@ -22,22 +22,21 @@ end
 #   should_validate_uniqueness_of :proposal_id, :scope => :user_id
 # end
 
-# describe Vote, "proposal validations" do
-#   
-#   before(:all) do
-#     @user = Factory(:user, :email => 'why@not.com')
-#     @proposal = Factory(:proposal)
-#   end
-#   
-#   it "creates a vote for an open proposal" do
-#     proc { @proposal.votes.create(:user => @user, :value => 1) }.should change(Vote, :count).by(1)
-#   end
-#   
-#   it "doesn't create a vote for a closed proposal" do
-#     @proposal.close
-#     proc { @proposal.votes.create(:user => @user, :value => 1) }.should_not change(Vote, :count)
-#   end
-# end
+describe Vote, "proposal validations" do
+  
+  before(:all) do
+    @user, @proposal = Factory(:user), Factory(:proposal)
+  end
+  
+  it "creates a vote for an open proposal" do
+    proc { @proposal.votes.create(:user => @user, :value => 1) }.should change(Vote, :count).by(1)
+  end
+  
+  it "doesn't create a vote for a closed proposal" do
+    @proposal.close!
+    proc { @proposal.votes.create(:user => @user, :value => 1) }.should_not change(Vote, :count)
+  end
+end
 
 # describe Vote, "scopes" do
 #   before(:each) do

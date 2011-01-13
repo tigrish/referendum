@@ -16,7 +16,7 @@ gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
 group :test do
   gem "cucumber-rails"
   gem "capybara"
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '>=1.1.beta1'
   gem 'remarkable_activerecord', '>=4.0.0.alpha2'
   gem "ZenTest"
 end

@@ -30,7 +30,7 @@ en:
           count:
             one: 1 vote in favor
             other: %{count} votes in favor
-        current_user_vote: "You voted have already voted"
+        current_user_vote: "You have already voted"
       user:
         info: By %{user_name} on %{proposal_date}
     votes:

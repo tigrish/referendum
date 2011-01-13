@@ -12,8 +12,22 @@ describe Vote, "validations" do
 end
 
 describe Vote, "after_save" do
-  it "closes the proposal when everybody has voted" do
-    pending
+  before(:each) do
+    @proposal = Factory(:proposal)
+    @user_1, @user_2 = Factory(:user), Factory(:user)
+  end
+  
+  it "closes the proposal when *all* users have voted" do
+    proc do
+      User.all.each { |user| @proposal.votes.create(:user => user, :value => 1) }
+      @proposal.reload
+    end.should change(@proposal, :state).to('closed')
+  end
+  
+  it "leaves the proposal open when NOT *all* users have voted" do
+    proc do
+      @proposal.votes.create(:user => @user_1, :value => 1)
+    end.should_not change(@proposal, :state)
   end
 end
 

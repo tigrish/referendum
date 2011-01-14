@@ -37,6 +37,19 @@
   }
 }
 
+nav.tabs {
+  ul {
+    @include horizontal-list;
+    border-bottom: 1px solid $divider_color;
+    a {
+      border: 1px solid $divider_color;
+      border-bottom: none;
+      display: block;
+      padding: .5em 1em;
+    }
+  }
+}
+
 #sidebar {
   .nav {
     background: $sidebar_bg_color;

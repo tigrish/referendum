@@ -16,9 +16,18 @@ class Proposal < ActiveRecord::Base
     end
   end
   
+  scope :state, lambda { |state| where('state = ?', state) }
+  scope :accepted, where(:accepted => true)
+  scope :rejected, where(:accepted => false)
+  
+  def rejected?
+    !accepted?
+  end
+  
 protected
 
   def do_close
+    self.accepted  = votes.count > 0 && votes.in_favor.count >= votes.count/2
     self.closed_at = Time.now
   end
 end

@@ -27,6 +27,7 @@ class Proposal < ActiveRecord::Base
 protected
 
   def do_close
+    self.accepted  = votes.count > 0 && votes.in_favor.count >= votes.count/2
     self.closed_at = Time.now
   end
 end

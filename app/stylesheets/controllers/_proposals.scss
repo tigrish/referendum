@@ -1,7 +1,11 @@
 .proposal {
   .state {
-    &.open { @include success; }
-    &.closed { @include error; }
+    &.open { 
+      color: $success-color;
+    }
+    &.closed { 
+      color: $error-color;
+    }
   }
   .user {
     color: lighten($header-color, 40);

@@ -16,6 +16,8 @@ class Proposal < ActiveRecord::Base
     end
   end
   
+  scope :state, lambda { |state| where('state = ?', state) }
+  
 protected
 
   def do_close

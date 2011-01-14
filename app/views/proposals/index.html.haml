@@ -5,8 +5,9 @@
 
 %nav.tabs
   %ul
-    %li= link_to('open', :state => :open)
-    %li= link_to('closed', :state => :closed)
+    %li= link_to('open',     :state => :open)
+    %li= link_to('accepted', :state => :closed, :accepted => true)
+    %li= link_to('rejected', :state => :closed, :rejected => true)
 
 %table
   %tr

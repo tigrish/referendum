@@ -23,3 +23,15 @@ describe Proposal, "#close!" do
     proc { @proposal.close! }.should change(@proposal, :closed_at).to(@now)
   end
 end
+
+# attribute methods
+
+describe Proposal, "rejected?" do
+  it "returns true when accepted? is false" do
+    Factory.build(:proposal, :accepted => false).should be_rejected
+  end
+  
+  it "returns false when accepted? is true" do
+    Factory.build(:proposal, :accepted => true).should_not be_rejected
+  end
+end

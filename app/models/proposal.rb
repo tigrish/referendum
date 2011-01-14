@@ -17,6 +17,12 @@ class Proposal < ActiveRecord::Base
   end
   
   scope :state, lambda { |state| where('state = ?', state) }
+  scope :accepted, where(:accepted => true)
+  scope :rejected, where(:accepted => false)
+  
+  def rejected?
+    !accepted?
+  end
   
 protected
 

@@ -3,7 +3,11 @@
     %ul
       %li= link_to(:new, new_proposal_path)
 
-%h1= Proposal.human_name
+%nav.tabs
+  %ul
+    %li= link_to('open',     :state => :open)
+    %li= link_to('accepted', :state => :closed, :accepted => true)
+    %li= link_to('rejected', :state => :closed, :rejected => true)
 
 %table
   %tr

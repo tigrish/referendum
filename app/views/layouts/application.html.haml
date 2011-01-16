@@ -18,5 +18,6 @@
       %section#content
         = render 'layouts/messages'
         = yield
-      %section#sidebar= yield(:sidebar)
+      - unless content_for(:sidebar).blank?
+        %section#sidebar= yield(:sidebar)
       %footer#footer= render 'layouts/footer'

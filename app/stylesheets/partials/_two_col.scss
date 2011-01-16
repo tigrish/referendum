@@ -25,9 +25,6 @@
   @include container;
 }
 
-body.one-col { 
-}
-
 body.two-col {
   #content {
     @include column($content-columns - 1);

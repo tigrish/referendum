@@ -38,3 +38,8 @@ en:
         flash:
           alert: "Sorry, your vote could not be taken into account"
           notice: "Thank you for voting!"
+  views:
+    application:
+      navigation:
+        new_proposal: "New Proposal"
+        proposals: "Proposals"

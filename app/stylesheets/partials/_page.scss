@@ -18,7 +18,14 @@
   #user_session {
     @include column($sidebar-columns, true);
     padding: .3em 0;
-    ul { @include horizontal-list(.5em, right); }
+    ul {
+      @include inline-list;
+      float: right;
+    }
+    a {
+      @include link-colors(lighten($link-color, 20));
+      padding-left: .5em;
+    }
   }
 
   #navigation {

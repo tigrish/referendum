@@ -22,7 +22,7 @@ $sidebar-columns: floor($blueprint-grid-columns / 3);
 // colours
 //-----------------------------------------------------------------------------
 $blue:  #0B88DA;
-$white: #F5FEFB;
+$white: #FEFEFE;
 $grey:  #56555A;
 $black: #0D0C0A;
 $red:   #F22613;
@@ -48,6 +48,14 @@ $nav_link_bg_color:   $grey;
 $sidebar_bg_color:     lighten($grey, 60);
 $sidebar_border_color: lighten($grey, 40);
 
+
+// tabs
+$tabs_bg_color:        lighten($grey, 60);
+$tabs_border_color:    lighten($grey, 60);
+$tabs_link_color:      $black;
+
+// tables
+$table_zebra_bg_color: darken($white, 3);
 
 // footer
 $footer_color:      lighten($grey, 20);

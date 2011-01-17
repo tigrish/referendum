@@ -18,7 +18,14 @@
   #user_session {
     @include column($sidebar-columns, true);
     padding: .3em 0;
-    ul { @include horizontal-list(.5em, right); }
+    ul {
+      @include inline-list;
+      float: right;
+    }
+    a {
+      @include link-colors(lighten($link-color, 20));
+      padding-left: .5em;
+    }
   }
 
   #navigation {
@@ -38,11 +45,16 @@
 }
 
 nav.tabs {
+  display: block;
+  margin-bottom: 1.5em;
   ul {
     @include horizontal-list;
-    border-bottom: 1px solid $divider_color;
+    border-bottom: 1px solid $tabs_border_color;
     a {
-      border: 1px solid $divider_color;
+      @include hover-link;
+      @include link-colors($tabs_link_color);
+      background: $tabs_bg_color;
+      border: 1px solid $tabs_border_color;
       border-bottom: none;
       display: block;
       padding: .5em 1em;

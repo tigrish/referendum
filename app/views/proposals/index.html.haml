@@ -1,10 +1,6 @@
-- content_for(:sidebar) do
-  .nav
-    %ul
-      %li= link_to(:new, new_proposal_path)
-
 %nav.tabs
   %ul
+    %li= link_to('All',      proposals_path)
     %li= link_to('open',     :state => :open)
     %li= link_to('accepted', :state => :closed, :accepted => true)
     %li= link_to('rejected', :state => :closed, :rejected => true)
@@ -12,14 +8,17 @@
 %table
   %tr
     %th= Proposal.human_attribute_name(:id)
-    %th= Proposal.human_attribute_name(:state)
+
     %th= Proposal.human_attribute_name(:title)
     %th= Proposal.human_attribute_name(:user)
     %th= Proposal.human_attribute_name(:created_at)
+    %th= Proposal.human_attribute_name(:state)
   - @proposals.each do |proposal|
     = content_tag_for(:tr, proposal) do
       %td= proposal.id
-      %td.state{:class => proposal.state}= proposal.state
       %td= link_to(proposal.title, proposal)
       %td.user= proposal.user.name
       %td= l(proposal.created_at, :format => :short)
+      %td.state{:class => proposal.state}= proposal.state
+
+= will_paginate(@proposals)

@@ -8,4 +8,10 @@ class ProposalsController < InheritedResources::Base
     @proposal.user = current_user
     create!
   end
+  
+protected
+
+  def collection
+    @proposals ||= end_of_association_chain.paginate(:page => params[:page])
+  end
 end

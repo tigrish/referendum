@@ -20,3 +20,5 @@
       %td.user= proposal.user.name
       %td= l(proposal.created_at, :format => :short)
       %td.state{:class => proposal.state}= proposal.state
+
+= will_paginate(@proposals)

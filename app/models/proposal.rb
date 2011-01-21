@@ -16,6 +16,7 @@ class Proposal < ActiveRecord::Base
     end
   end
   
+  default_scope order('id DESC')
   scope :state, lambda { |state| where('state = ?', state) }
   scope :accepted, where(:accepted => true)
   scope :rejected, where(:accepted => false)

@@ -29,14 +29,7 @@ describe Proposal, "#close!" do
     @proposal.close!
     @proposal.should be_accepted
   end
-  
-  it "sets accepted to true when 50% of the votes are in_favor" do
-    2.times { Factory(:vote, :proposal => @proposal, :value => 1)  }
-    2.times { Factory(:vote, :proposal => @proposal, :value => -1) }
-    @proposal.close!
-    @proposal.should be_accepted
-  end
-  
+    
   it "sets accepted to false when under 50% of the votes are in favor" do
     1.times { Factory(:vote, :proposal => @proposal, :value => 1)  }
     3.times { Factory(:vote, :proposal => @proposal, :value => -1) }
@@ -45,6 +38,12 @@ describe Proposal, "#close!" do
   end
   
   it "sets accepted to false when there are no votes" do
+    @proposal.close!
+    @proposal.should be_rejected
+  end
+  
+  it "sets accepted to false when there is only 1 vote and it is against" do
+    Factory(:vote, :proposal => @proposal, :value => -1)
     @proposal.close!
     @proposal.should be_rejected
   end

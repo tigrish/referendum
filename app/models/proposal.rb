@@ -27,6 +27,10 @@ class Proposal < ActiveRecord::Base
   
 protected
 
+  def after_save
+    self.expires_at = Time.now + 7.days
+  end
+
   def do_close
     self.accepted  = votes.count > 0 && votes.in_favor.count > votes.count/2
     self.closed_at = Time.now

@@ -12,6 +12,18 @@ describe Proposal, 'validations' do
   should_validate_presence_of :user
 end
 
+describe Proposal, "#create" do
+  before(:each) do
+    @now = Time.now
+    @proposal = Factory.build(:proposal)
+  end
+  
+  it "sets expires_at to 1 week from now" do
+    Time.should_receive(:now).at_least(:once).and_return(@now)
+    proc { @proposal.save }.should change(@proposal, :expires_at).to(@now + 1.week)
+  end
+end
+
 describe Proposal, "#close!" do
   before(:each) do
     @proposal = Factory(:proposal)

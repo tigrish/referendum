@@ -50,6 +50,11 @@ describe Vote, "proposal validations" do
     @proposal.close!
     proc { @proposal.votes.create(:user => @user, :value => 1) }.should_not change(Vote, :count)
   end
+
+  it "doesn't create a vote for an expired proposal" do
+    @proposal.update_attribute(:expires_at, Time.now - 1.day)
+    proc { @proposal.votes.create(:user => @user, :value => 1) }.should_not change(Vote, :count)
+  end
 end
 
 describe Vote, "scopes" do

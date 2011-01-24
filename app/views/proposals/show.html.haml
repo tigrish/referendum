@@ -2,6 +2,7 @@
   %h1= @proposal.title
   %span.state{:class => @proposal.state}= @proposal.state
   %span.user= t('controllers.proposals.user.info', :user_name => @proposal.user.name, :proposal_date => l(@proposal.created_at, :format => :short))
+  %span.expiry= t("controllers.proposals.#{@proposal.expired? ? 'expired' : 'expires'}", :date => l(@proposal.expires_at, :format => :short))
   %p= simple_format(@proposal.description)
 
 %section#comments

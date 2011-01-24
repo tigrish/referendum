@@ -63,7 +63,17 @@ end
 
 # attribute methods
 
-describe Proposal, "rejected?" do
+describe Proposal, "#expired?" do
+  it "returns true when expires_at is in the past" do
+    Factory.build(:proposal, :expires_at => Time.now - 1.day).should be_expired
+  end
+  
+  it "returns false when expires_at is in the future" do
+    Factory.build(:proposal, :expires_at => Time.now + 1.day).should_not be_expired
+  end
+end
+
+describe Proposal, "#rejected?" do
   it "returns true when accepted? is false" do
     Factory.build(:proposal, :accepted => false).should be_rejected
   end

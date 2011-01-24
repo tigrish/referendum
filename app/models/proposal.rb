@@ -21,13 +21,17 @@ class Proposal < ActiveRecord::Base
   scope :accepted, where(:accepted => true)
   scope :rejected, where(:accepted => false)
   
+  def expired?
+    expires_at < Time.now
+  end
+  
   def rejected?
     !accepted?
   end
-  
+    
 protected
 
-  def after_save
+  def before_create
     self.expires_at = Time.now + 7.days
   end
 

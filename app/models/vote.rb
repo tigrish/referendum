@@ -17,7 +17,6 @@ protected
 
   def proposal_state
     errors.add(:proposal, :not_open) if proposal && !proposal.open?
-    errors.add(:proposal, :expired)  if proposal && proposal.expired?
   end
   
   def close_completed_proposal

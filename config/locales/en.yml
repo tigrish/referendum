@@ -11,6 +11,7 @@ en:
               not_open: "is closed for voting"
   controllers:
     proposals:
+      closed: Closed at %{date}
       expired: Closed at %{date}
       expires: Expires at %{date}
       comment:

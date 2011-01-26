@@ -3,6 +3,11 @@ class ProposalsController < InheritedResources::Base
   
   has_scope :state, :accepted, :rejected
   
+  def show
+    @proposal = Proposal.find(params[:id])
+    @proposal.close! if @proposal.open? && @proposal.expired?
+  end
+  
   def create
     @proposal = Proposal.new(params[:proposal])
     @proposal.user = current_user

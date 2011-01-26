@@ -10,7 +10,6 @@ class Proposal < ActiveRecord::Base
   state_machine do
     state :open
     state :closed
-    state :expired
     
     event :close do
       transitions :from => :open, :to => :closed, :on_transition => :do_close
@@ -25,11 +24,16 @@ class Proposal < ActiveRecord::Base
   scope :state, lambda { |state| where('state = ?', state) }
   scope :accepted, where(:accepted => true)
   scope :rejected, where(:accepted => false)
+  scope :expired,  where(['expires_at < ?', Time.now])
   
   def rejected?
     !accepted?
   end
-    
+  
+  def expired?
+    expires_at < Time.now
+  end
+  
 protected
 
   def before_create
@@ -39,9 +43,5 @@ protected
   def do_close
     self.accepted  = votes.count > 0 && votes.in_favor.count > votes.count/2
     self.closed_at = Time.now
-  end
-  
-  def do_expire
-    
   end
 end

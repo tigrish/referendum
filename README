@@ -3,3 +3,4 @@
 Devise needs this to be set in order to send email
 
   heroku config:add MAILER_HOST=referendum.heroku.com
+  heroku config:add MAILER_SENDER=no-reply@referendum.heroku.com

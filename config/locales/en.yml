@@ -8,6 +8,7 @@ en:
         vote:
           attributes:
             proposal:
+              expired: "has expired"
               not_open: "is closed for voting"
   controllers:
     proposals:

@@ -12,6 +12,18 @@ describe Proposal, 'validations' do
   should_validate_presence_of :user
 end
 
+describe Proposal, "#create" do
+  before(:each) do
+    @now = Time.now
+    @proposal = Factory.build(:proposal)
+  end
+  
+  it "sets expires_at to 1 week from now" do
+    Time.should_receive(:now).at_least(:once).and_return(@now)
+    proc { @proposal.save }.should change(@proposal, :expires_at).to(@now + 1.week)
+  end
+end
+
 describe Proposal, "#close!" do
   before(:each) do
     @proposal = Factory(:proposal)
@@ -51,7 +63,17 @@ end
 
 # attribute methods
 
-describe Proposal, "rejected?" do
+describe Proposal, "#expired?" do
+  it "returns true when expires_at is in the past" do
+    Factory.build(:proposal, :expires_at => Time.now - 1.day).should be_expired
+  end
+  
+  it "returns false when expires_at is in the future" do
+    Factory.build(:proposal, :expires_at => Time.now + 1.day).should_not be_expired
+  end
+end
+
+describe Proposal, "#rejected?" do
   it "returns true when accepted? is false" do
     Factory.build(:proposal, :accepted => false).should be_rejected
   end

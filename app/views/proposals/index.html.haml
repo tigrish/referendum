@@ -8,11 +8,11 @@
 %table
   %tr
     %th= Proposal.human_attribute_name(:id)
-
     %th= Proposal.human_attribute_name(:title)
     %th= Proposal.human_attribute_name(:user)
     %th= Proposal.human_attribute_name(:created_at)
     %th= Proposal.human_attribute_name(:state)
+    %th= Proposal.human_attribute_name(:expires_at)
   - @proposals.each do |proposal|
     = content_tag_for(:tr, proposal) do
       %td= proposal.id
@@ -20,5 +20,6 @@
       %td.user= proposal.user.name
       %td= l(proposal.created_at, :format => :short)
       %td.state{:class => proposal.state}= proposal.state
+      %td= l(proposal.expires_at, :format => :short)
 
 = will_paginate(@proposals)

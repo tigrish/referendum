@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110114001425) do
+ActiveRecord::Schema.define(:version => 20110123232625) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20110114001425) do
     t.string   "state"
     t.datetime "closed_at"
     t.boolean  "accepted"
+    t.datetime "expires_at"
   end
 
   create_table "users", :force => true do |t|

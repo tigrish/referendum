@@ -10,6 +10,8 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
+    when /the page for the proposal titled "(.*)"/
+      proposal_path(Proposal.find_by_title($1))
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

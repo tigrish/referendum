@@ -1,11 +1,12 @@
 class Proposal < ActiveRecord::Base
   include ActiveRecord::Transitions
   
+  belongs_to :category
   belongs_to :user
   has_many   :comments
   has_many   :votes
   
-  validates_presence_of :title, :description, :user
+  validates_presence_of :category, :title, :description, :user
   before_create { |record| record.expires_at = Time.now + 7.days }
   
   state_machine do

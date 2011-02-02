@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110123232625) do
+ActiveRecord::Schema.define(:version => 20110202000017) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.integer  "expiry_seconds"
+    t.integer  "participation_percentage"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -30,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20110123232625) do
     t.datetime "closed_at"
     t.boolean  "accepted"
     t.datetime "expires_at"
+    t.integer  "category_id"
   end
 
   create_table "users", :force => true do |t|

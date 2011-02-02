@@ -13,7 +13,7 @@
 
 %section#comments
   - if user_signed_in?
-    = simple_form_for([@proposal, Comment.new]) do |f|
+    = simple_form_for([@category, @proposal, Comment.new]) do |f|
       = f.input :body, :label => Comment.model_name.human, :input_html => { :rows => 5 }
       = f.submit :submit
   = render @proposal.comments
@@ -27,7 +27,7 @@
         .count= t('controllers.proposals.votes.in_favor.count', :count => @proposal.votes.in_favor.count)
         
         - if user_signed_in? && !current_user.votes.where(:proposal_id => @proposal.id).any? && @proposal.open?
-          = simple_form_for([@proposal, Vote.new]) do |f|
+          = simple_form_for([@category, @proposal, Vote.new]) do |f|
             = f.input :value, :as => :hidden, :input_html => { :value => '1' }
             = f.submit t('controllers.proposals.votes.in_favor.action')
     .against
@@ -37,7 +37,7 @@
         .count= t('controllers.proposals.votes.against.count', :count => @proposal.votes.against.count)
 
         - if user_signed_in? && !current_user.votes.where(:proposal_id => @proposal.id).any? && @proposal.open?
-          = simple_form_for([@proposal, Vote.new]) do |f|
+          = simple_form_for([@category, @proposal, Vote.new]) do |f|
             = f.input :value, :as => :hidden, :input_html => { :value => '-1' }
             = f.submit t('controllers.proposals.votes.against.action')
 

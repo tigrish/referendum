@@ -1,9 +1,11 @@
 Democracy::Application.routes.draw do
   devise_for :users
 
-  resources :proposals do
-    resources :comments
-    resources :votes
+  resources :categories do
+    resources :proposals do
+      resources :comments
+      resources :votes
+    end
   end
 
   # Sample of regular route:

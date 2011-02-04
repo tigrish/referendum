@@ -51,6 +51,21 @@ describe Proposal, "#close!" do
     @proposal.close!
     @proposal.should be_rejected
   end
+
+  it "sets accepted to true when minimum participation is met" do
+    @proposal.update_attributes(:category => Factory(:category, :required_participation_percentage => 60))
+    2.times { Factory(:vote, :proposal => @proposal, :value => 1) }
+    @proposal.close!
+    @proposal.should be_accepted
+  end
+
+  it "sets accepted to false when minimum participation isn't met" do
+    @proposal.update_attributes(:category => Factory(:category, :required_participation_percentage => 60))
+    2.times { Factory(:user) }
+    2.times { Factory(:vote, :proposal => @proposal, :value => 1) }
+    @proposal.close!
+    @proposal.should be_rejected
+  end
   
   it "sets accepted to false when there are no votes" do
     @proposal.close!
@@ -83,5 +98,14 @@ describe Proposal, "#rejected?" do
   
   it "returns false when accepted? is true" do
     Factory.build(:proposal, :accepted => true).should_not be_rejected
+  end
+end
+
+describe Proposal, "#required_participation" do
+  it "returns the percentage of the total number of user as defined by the category's required_participation_percentage" do
+    User.should_receive(:count).and_return(10)
+    category = Factory(:category, :required_participation_percentage => 33)
+    proposal = Factory(:proposal, :category => category)
+    proposal.required_participation.should == 4
   end
 end

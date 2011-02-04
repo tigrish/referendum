@@ -3,7 +3,7 @@ class CreateCategories < ActiveRecord::Migration
     create_table :categories do |t|
       t.string :name
       t.integer :expiry_seconds
-      t.integer :participation_percentage
+      t.integer :required_participation_percentage
       t.timestamps
     end
     add_column :proposals, :category_id, :integer

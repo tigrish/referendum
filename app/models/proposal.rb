@@ -31,7 +31,11 @@ class Proposal < ActiveRecord::Base
   def expired?
     expires_at < Time.now
   end
-  
+
+  def required_participation
+    (User.count * (category.required_participation_percentage / 100.0)).ceil
+  end
+
 protected
 
   def set_expires_at
@@ -39,7 +43,7 @@ protected
   end
 
   def do_close
-    self.accepted  = votes.count > 0 && votes.in_favor.count > votes.count/2
+    self.accepted  = votes.count >= required_participation && votes.in_favor.count > votes.count/2
     self.closed_at = Time.now
   end
 end

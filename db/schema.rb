@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20110202000017) do
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.integer  "expiry_seconds"
-    t.integer  "participation_percentage"
+    t.integer  "required_participation_percentage"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

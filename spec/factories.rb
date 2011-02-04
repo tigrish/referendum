@@ -1,8 +1,15 @@
 FactoryGirl.define do
+  factory :category do
+    sequence(:name) { |n| "Category #{n}" }
+    expiry_seconds 60*60*24*7 # 1 week
+    required_participation_percentage 20
+  end
+
   factory :proposal do
     title 'Proposal Title'
     description 'Proposal Description'
     state 'open'
+    association :category
     association :user
   end
   

@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+Category.find_by_name('Proposals') || Category.create(:name => 'Proposals', :expiry_seconds => 60*60*24, :required_participation_percentage => 30)

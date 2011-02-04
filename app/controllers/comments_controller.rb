@@ -1,14 +1,11 @@
 class CommentsController < InheritedResources::Base
   before_filter :authenticate_user!
   actions :create
-  belongs_to :proposal
+  nested_belongs_to :category, :proposal
   
   def create
     @comment = parent.comments.new(params[:comment])
     @comment.user = current_user
-    create! do |success, failure|
-      success.html { redirect_to(parent) }
-      failure.html { redirect_to(parent) }
-    end
+    create! { parent_url }
   end
 end

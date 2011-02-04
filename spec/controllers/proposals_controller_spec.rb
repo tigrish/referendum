@@ -1,9 +1,13 @@
 require 'spec_helper'
 
 describe ProposalsController do
+  before(:each) do
+    @category = Factory(:category)
+  end
+
   describe "GET 'index'" do
     it "should be successful" do
-      get 'index'
+      get 'index', :category_id => @category.id
       response.should be_success
     end
   end
@@ -15,7 +19,7 @@ describe ProposalsController do
     end
     
     def do_action
-      post :create, :proposal => {:title => '[title]', :description => '[description]'}
+      post :create, :category_id => @category.id, :proposal => {:title => '[title]', :description => '[description]'}
     end
     
     it "should create a proposal" do

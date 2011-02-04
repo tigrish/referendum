@@ -24,6 +24,9 @@ en:
         total:
           one: 1 vote in total
           other: %{count} votes in total
+        needed:
+          one: 1 vote needed
+          other: %{count} votes needed
         against:
           action: Vote against
           count:

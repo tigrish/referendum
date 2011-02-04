@@ -1,11 +1,13 @@
 class Proposal < ActiveRecord::Base
   include ActiveRecord::Transitions
   
+  belongs_to :category
   belongs_to :user
   has_many   :comments
   has_many   :votes
   
-  validates_presence_of :title, :description, :user
+  validates_presence_of :category, :title, :description, :user
+  before_create :set_expires_at
   
   state_machine do
     state :open
@@ -13,10 +15,6 @@ class Proposal < ActiveRecord::Base
     
     event :close do
       transitions :from => :open, :to => :closed, :on_transition => :do_close
-    end
-    
-    event :expire do
-      transitions :from => :open, :to => :expired, :on_transition => :do_expire
     end
   end
   
@@ -33,15 +31,19 @@ class Proposal < ActiveRecord::Base
   def expired?
     expires_at < Time.now
   end
-  
+
+  def required_participation
+    (User.count * (category.required_participation_percentage / 100.0)).ceil
+  end
+
 protected
 
-  def before_create
-    self.expires_at = Time.now + 7.days
+  def set_expires_at
+    self.expires_at = Time.now + category.expiry_seconds
   end
 
   def do_close
-    self.accepted  = votes.count > 0 && votes.in_favor.count > votes.count/2
+    self.accepted  = votes.count >= required_participation && votes.in_favor.count > votes.count/2
     self.closed_at = Time.now
   end
 end

@@ -7,7 +7,7 @@ class Proposal < ActiveRecord::Base
   has_many   :votes
   
   validates_presence_of :category, :title, :description, :user
-  before_create { |record| record.expires_at = Time.now + 7.days }
+  before_create :set_expires_at
   
   state_machine do
     state :open
@@ -15,10 +15,6 @@ class Proposal < ActiveRecord::Base
     
     event :close do
       transitions :from => :open, :to => :closed, :on_transition => :do_close
-    end
-    
-    event :expire do
-      transitions :from => :open, :to => :expired, :on_transition => :do_expire
     end
   end
   
@@ -37,6 +33,10 @@ class Proposal < ActiveRecord::Base
   end
   
 protected
+
+  def set_expires_at
+    self.expires_at = Time.now + category.expiry_seconds
+  end
 
   def do_close
     self.accepted  = votes.count > 0 && votes.in_favor.count > votes.count/2

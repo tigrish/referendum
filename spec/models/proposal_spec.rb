@@ -17,12 +17,13 @@ end
 describe Proposal, "#create" do
   before(:each) do
     @now = Time.now
-    @proposal = Factory.build(:proposal)
+    @category = Factory.build(:category, :expiry_seconds => 60*60)
+    @proposal = Factory.build(:proposal, :category => @category)
   end
   
-  it "sets expires_at to 1 week from now" do
+  it "sets expires_at to now + the category's expiry_seconds" do
     Time.should_receive(:now).at_least(:once).and_return(@now)
-    proc { @proposal.save }.should change(@proposal, :expires_at).to(@now + 1.week)
+    proc { @proposal.save }.should change(@proposal, :expires_at).to(@now + 1.hour)
   end
 end
 
